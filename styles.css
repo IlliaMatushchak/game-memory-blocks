@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --board-size-cols: 1;
+  --board-size-rows: 1;
+  --box-size: 100px;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+#board {
+  width: calc(var(--board-size-cols) * var(--box-size));
+  height: calc(var(--board-size-rows) * var(--box-size));
+  display: grid;
+  grid-template-columns: repeat(var(--board-size-cols), 1fr);
+  grid-template-rows: repeat(var(--board-size-rows) 1fr);
+  grid-gap: calc(var(--box-size) / 20);
+}
+
+#board div[data-selected="false"] {
+  background-color: wheat;
+}
+
+#board div[data-selected="true"] {
+  background-color: black;
+}
+
+.success {
+  border: 5px solid green;
+}
+
+.error {
+  border: 5px solid red;
+}
