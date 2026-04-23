@@ -12,7 +12,11 @@ body {
   font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
-#board {
+#board-container {
+  margin: 10px 0;
+}
+
+.board {
   width: calc(var(--board-size-cols) * var(--box-size));
   height: calc(var(--board-size-rows) * var(--box-size));
   display: grid;
@@ -21,18 +25,18 @@ body {
   grid-gap: calc(var(--box-size) / 20);
 }
 
-#board div[data-selected="false"] {
-  background-color: wheat;
+.block {
+  background-color: rgb(170, 170, 170);
 }
 
-#board div[data-selected="true"] {
+.selected {
   background-color: black;
 }
 
 .success {
-  border: 5px solid green;
+  outline: 5px solid green;
 }
 
 .error {
-  border: 5px solid red;
+  background-color: red;
 }

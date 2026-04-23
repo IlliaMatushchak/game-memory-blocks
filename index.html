@@ -8,96 +8,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="board"></div>
-    <button class="btn-check">Check</button>
-    <button class="btn-next">Next</button>
+    <button id="btn-start">Start</button>
+    <div id="board-container"></div>
 
-    <script>
-      let size = { rows: 3, cols: 3 };
-      let appearanceDuration = 1;
-      let answerDuration = 5;
-
-      document.documentElement.style.setProperty(
-        "--board-size-cols",
-        `${size.cols}`,
-      );
-      document.documentElement.style.setProperty(
-        "--board-size-rows",
-        `${size.rows}`,
-      );
-
-      let randomPattern = [];
-      let userPattern = [];
-      for (let x = 0; x < size.rows; x++) {
-        randomPattern[x] = [];
-        userPattern[x] = [];
-        for (let y = 0; y < size.cols; y++) {
-          randomPattern[x][y] = Math.round(Math.random()) === 1;
-          userPattern[x][y] = false;
-        }
-      }
-
-      let boardElement = document.querySelector("#board");
-
-      for (let x = 0; x < size.rows; x++) {
-        // let row = "";
-        for (let y = 0; y < size.cols; y++) {
-          let element = document.createElement("div");
-          let isSelected = randomPattern[x][y];
-          element.dataset.selected = isSelected;
-          boardElement.append(element);
-          // row = row + randomPattern[x][y];
-        }
-        // console.log(row);
-        // row = "";
-      }
-
-      setTimeout(() => {
-        boardElement.innerHTML = "";
-        for (let x = 0; x < size.rows; x++) {
-          for (let y = 0; y < size.cols; y++) {
-            let element = document.createElement("div");
-            let isSelected = userPattern[x][y];
-            element.dataset.selected = isSelected;
-            element.coordinates = { x, y };
-            boardElement.append(element);
-          }
-        }
-
-        boardElement.addEventListener("click", (e) => {
-          let isSelected = e.target.dataset.selected === "true";
-          e.target.dataset.selected = !isSelected;
-        });
-      }, appearanceDuration * 1000);
-
-      function checkAnswer() {
-        let allUserBlocks = document.querySelectorAll("#board div");
-        let isCorrect = true;
-
-        allUserBlocks.forEach((userBlock) => {
-          let { x, y } = userBlock.coordinates;
-          let isSelected = userBlock.dataset.selected === "true";
-          let isSimilar = randomPattern[x][y] === isSelected;
-          if (!isSimilar) {
-            userBlock.className = "error";
-            isCorrect = false;
-          }
-        });
-
-        if (isCorrect) {
-          boardElement.className = "success";
-        }
-      }
-
-      setTimeout(checkAnswer, answerDuration * 1000);
-
-      let btnCheck = document.querySelector(".btn-check");
-      btnCheck.addEventListener("click", checkAnswer);
-
-      let btnNext = document.querySelector(".btn-next");
-      btnNext.addEventListener("click", () => {
-        window.location.reload();
-      });
-    </script>
+    <script src="./block.js"></script>
+    <script src="./board.js"></script>
+    <script src="./game-manager.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
