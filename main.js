@@ -3,11 +3,13 @@ let appearanceDuration = 1;
 let answerDuration = 4;
 let boardContainerEl = document.querySelector("#board-container");
 let btnStart = document.querySelector("#btn-start");
+const scoreEl = document.querySelector("#score");
 
 btnStart.addEventListener("click", startGame);
 function startGame() {
   boardContainerEl.innerHTML = "";
-  let gameManager = new GameManager(boardContainerEl, {
+  scoreEl.textContent = "0";
+  let gameManager = new GameManager(boardContainerEl, scoreEl, {
     size,
     appearanceDuration,
     answerDuration,

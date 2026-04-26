@@ -2,9 +2,11 @@ class GameManager {
   #difficultySettings;
   #score = 0;
   #containerEl;
+  #scoreEl;
 
-  constructor(containerEl, difficultySettings) {
+  constructor(containerEl, scoreEl, difficultySettings) {
     this.#containerEl = containerEl;
+    this.#scoreEl = scoreEl;
     this.#difficultySettings = difficultySettings;
   }
 
@@ -19,9 +21,8 @@ class GameManager {
       setTimeout(() => {
         if (isCorrect) {
           this.#score++;
-          this.startGame();
-        } else {
           this.showResults();
+          this.startGame();
         }
       }, 1000);
     };
@@ -34,6 +35,6 @@ class GameManager {
   }
 
   showResults() {
-    this.#containerEl.innerHTML = `<h2>Score: ${this.#score}</h2>`;
+    this.#scoreEl.textContent = this.#score;
   }
 }
