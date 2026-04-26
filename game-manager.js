@@ -13,11 +13,6 @@ class GameManager {
     this.#containerEl.innerHTML = "";
     this.#containerEl.append(boardManager.exampleBoardEl);
 
-    setTimeout(() => {
-      this.#containerEl.innerHTML = "";
-      this.#containerEl.append(boardManager.interactiveBoardEl);
-    }, this.#difficultySettings.appearanceDuration * 1000);
-
     let checkAnswer = () => {
       let isCorrect = boardManager.compare();
 
@@ -31,7 +26,11 @@ class GameManager {
       }, 1000);
     };
 
-    setTimeout(checkAnswer, this.#difficultySettings.answerDuration * 1000);
+    setTimeout(() => {
+      this.#containerEl.innerHTML = "";
+      this.#containerEl.append(boardManager.interactiveBoardEl);
+      setTimeout(checkAnswer, this.#difficultySettings.answerDuration * 1000);
+    }, this.#difficultySettings.appearanceDuration * 1000);
   }
 
   showResults() {
