@@ -3,11 +3,11 @@
 }
 
 :root {
-  font-size: 16px;
+  font-size: clamp(16px, 1vw + 4px, 60px);
 
   --board-size-cols: 1;
   --board-size-rows: 1;
-  --box-size: 100px;
+  --box-size: 7rem;
 }
 
 body {
@@ -29,6 +29,10 @@ li {
   display: inline-block;
 }
 
+input {
+  font-size: inherit;
+}
+
 button {
   width: 7rem;
   height: 3rem;
@@ -36,6 +40,7 @@ button {
   border: 0.1rem solid black;
   cursor: pointer;
   transition: transform 0.2s;
+  font-size: inherit;
 }
 
 button:hover {
@@ -48,7 +53,7 @@ button:active {
 
 header,
 main {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 header {
@@ -136,7 +141,7 @@ header menu button {
 #info-container {
   text-align: center;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 #info-container span {
@@ -152,7 +157,7 @@ header menu button {
   height: calc(var(--board-size-rows) * var(--box-size));
   display: grid;
   grid-template-columns: repeat(var(--board-size-cols), 1fr);
-  grid-template-rows: repeat(var(--board-size-rows) 1fr);
+  grid-template-rows: repeat(var(--board-size-rows), 1fr);
   grid-gap: calc(var(--box-size) / 20);
   margin: auto;
 }
@@ -172,4 +177,16 @@ header menu button {
 
 .error {
   background-color: red;
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    --box-size: calc(75vw/var(--board-size-cols));
+  }
+}
+
+@media screen and (max-width: 450px) {
+  :root {
+    --box-size: calc(85vw/var(--board-size-cols));
+  }
 }
