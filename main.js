@@ -13,6 +13,8 @@ const colsInput = document.getElementById("cols");
 const appearanceInput = document.getElementById("appearance");
 const answerInput = document.getElementById("answer");
 
+const btnFullscreen = document.querySelector("#btn-fullscreen");
+
 let size = {};
 size.rows = Number(rowsInput.value);
 size.cols = Number(colsInput.value);
@@ -46,3 +48,15 @@ function startGame() {
   });
   gameManager.startGame();
 }
+
+btnFullscreen.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch((err) => {
+      alert(`Error: ${err.message}`);
+    });
+    btnFullscreen.style.backgroundImage = 'url("./images/smallscreen.png")';
+  } else {
+    document.exitFullscreen();
+    btnFullscreen.style.backgroundImage = 'url("./images/fullscreen.png")';
+  }
+});

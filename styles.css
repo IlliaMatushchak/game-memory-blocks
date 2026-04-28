@@ -75,6 +75,19 @@ header menu button {
   margin: 0.5rem;
 }
 
+#btn-fullscreen {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background-image: url("./images/fullscreen.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+}
+
 .settings.show {
   position: fixed;
   z-index: 999;
