@@ -25,6 +25,11 @@ class GameManager {
           this.#score++;
           this.showResults();
           this.startGame();
+        } else {
+          let textNode = document.createTextNode(
+            "Click 'Start' button to try again!",
+          );
+          this.#containerEl.append(textNode);
         }
       }, 1000);
     };

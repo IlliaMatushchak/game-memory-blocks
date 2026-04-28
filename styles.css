@@ -143,6 +143,10 @@ header menu button {
   color: red;
 }
 
+#board-container {
+  text-align: center;
+}
+
 .board {
   width: calc(var(--board-size-cols) * var(--box-size));
   height: calc(var(--board-size-rows) * var(--box-size));
