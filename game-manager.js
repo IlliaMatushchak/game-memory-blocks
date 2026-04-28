@@ -3,11 +3,13 @@ class GameManager {
   #score = 0;
   #containerEl;
   #scoreEl;
+  #timer;
 
-  constructor(containerEl, scoreEl, difficultySettings) {
+  constructor(containerEl, scoreEl, timeEl, difficultySettings) {
     this.#containerEl = containerEl;
     this.#scoreEl = scoreEl;
     this.#difficultySettings = difficultySettings;
+    this.#timer = new CountdownTimer(timeEl);
   }
 
   startGame() {
@@ -27,11 +29,11 @@ class GameManager {
       }, 1000);
     };
 
-    setTimeout(() => {
+    this.#timer.start(this.#difficultySettings.appearanceDuration, () => {
       this.#containerEl.innerHTML = "";
       this.#containerEl.append(boardManager.interactiveBoardEl);
-      setTimeout(checkAnswer, this.#difficultySettings.answerDuration * 1000);
-    }, this.#difficultySettings.appearanceDuration * 1000);
+      this.#timer.start(this.#difficultySettings.answerDuration, checkAnswer);
+    });
   }
 
   showResults() {

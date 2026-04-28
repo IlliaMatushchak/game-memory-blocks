@@ -133,6 +133,16 @@ header menu button {
   background-color: rgb(210, 0, 0);
 }
 
+#info-container {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+#info-container span {
+  color: red;
+}
+
 .board {
   width: calc(var(--board-size-cols) * var(--box-size));
   height: calc(var(--board-size-rows) * var(--box-size));

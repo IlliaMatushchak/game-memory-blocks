@@ -1,5 +1,6 @@
 const boardContainerEl = document.querySelector("#board-container");
 const scoreEl = document.querySelector("#score");
+const timeEl = document.querySelector("#time");
 const btnStart = document.querySelector("#btn-start");
 
 const settingsEl = document.querySelector(".settings");
@@ -38,7 +39,7 @@ btnStart.addEventListener("click", startGame);
 function startGame() {
   boardContainerEl.innerHTML = "";
   scoreEl.textContent = "0";
-  let gameManager = new GameManager(boardContainerEl, scoreEl, {
+  let gameManager = new GameManager(boardContainerEl, scoreEl, timeEl, {
     size,
     appearanceDuration,
     answerDuration,
