@@ -88,6 +88,10 @@ header menu button {
   background-size: 80%;
 }
 
+#btn-fullscreen.is-fullscreen {
+  background-image: url("./images/smallscreen.png");
+}
+
 .settings.show {
   position: fixed;
   z-index: 999;
