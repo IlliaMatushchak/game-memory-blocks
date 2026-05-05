@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,11 @@
   "bugs": {
     "url": "https://github.com/IlliaMatushchak/game-memory-blocks/issues"
   },
-  "homepage": "https://github.com/IlliaMatushchak/game-memory-blocks#readme",
+  "homepage": "https://IlliaMatushchak.github.io/game-memory-blocks",
   "description": "",
   "devDependencies": {
     "copy-webpack-plugin": "^14.0.0",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.7",
     "ts-loader": "^9.5.7",
     "typescript": "^6.0.3",
