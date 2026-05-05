@@ -1,5 +1,5 @@
-import { Board } from "./Board.js";
-import { ExampleBlock } from "../blocks/ExampleBlock.js";
+import { Board } from "./Board";
+import { ExampleBlock } from "../blocks/ExampleBlock";
 
 export class ExampleBoard extends Board {
   public exampleBlocks: ExampleBlock[][] = [];

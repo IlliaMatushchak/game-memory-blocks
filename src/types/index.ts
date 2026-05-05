@@ -1,4 +1,4 @@
-import { InteractiveBlock } from "../blocks/InteractiveBlock.js";
+import { InteractiveBlock } from "../blocks/InteractiveBlock";
 
 export interface Size {
   rows: number;

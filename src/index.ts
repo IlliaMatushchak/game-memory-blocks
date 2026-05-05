@@ -1,7 +1,7 @@
-import { DOM, show, hide } from "./ui/dom.js";
-import { setupFullscreen } from "./ui/fullscreen.js";
-import { GameManager } from "./game/GameManager.js";
-import { Size } from "./types/index.js";
+import { DOM, show, hide } from "./ui/dom";
+import { setupFullscreen } from "./ui/fullscreen";
+import { GameManager } from "./game/GameManager";
+import { Size } from "./types/index";
 
 let size: Size = {
   rows: Number(DOM.rowsInput.value),

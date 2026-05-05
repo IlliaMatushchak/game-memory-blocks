@@ -1,6 +1,6 @@
-import { CountdownTimer } from "../core/CountdownTimer.js";
-import { DifficultySettings } from "../types/index.js";
-import { BoardManager } from "../boards/BoardManager.js";
+import { CountdownTimer } from "../core/CountdownTimer";
+import { DifficultySettings } from "../types/index";
+import { BoardManager } from "../boards/BoardManager";
 
 export class GameManager {
   private settings: DifficultySettings;

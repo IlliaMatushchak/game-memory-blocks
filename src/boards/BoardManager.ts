@@ -1,8 +1,8 @@
-import { Size } from "../types/index.js";
-import { ExampleBoard } from "./ExampleBoard.js";
-import { InteractiveBoard } from "./InteractiveBoard.js";
-import { ExampleBlock } from "../blocks/ExampleBlock.js";
-import { InteractiveBlock } from "../blocks/InteractiveBlock.js";
+import { Size } from "../types/index";
+import { ExampleBoard } from "./ExampleBoard";
+import { InteractiveBoard } from "./InteractiveBoard";
+import { ExampleBlock } from "../blocks/ExampleBlock";
+import { InteractiveBlock } from "../blocks/InteractiveBlock";
 
 export class BoardManager {
   private size: Size;

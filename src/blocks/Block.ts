@@ -1,4 +1,4 @@
-import { BlockElement } from "../types/index.js";
+import { BlockElement } from "../types/index";
 
 export class Block {
   public isSelected: boolean;
