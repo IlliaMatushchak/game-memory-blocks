@@ -8,6 +8,7 @@ export class GameManager {
   private containerEl: HTMLDivElement;
   private scoreEl: HTMLSpanElement;
   private timer: CountdownTimer;
+  private timeOutId: number | null = null;
 
   constructor(
     containerEl: HTMLDivElement,
@@ -21,7 +22,7 @@ export class GameManager {
     this.timer = new CountdownTimer(timeEl);
   }
 
-  startGame(): void {
+  start(): void {
     const boardManager: BoardManager = new BoardManager(this.settings.size);
 
     this.containerEl.innerHTML = "";
@@ -30,10 +31,10 @@ export class GameManager {
     const checkAnswer = (): void => {
       const isCorrect: boolean = boardManager.compare();
 
-      setTimeout(() => {
+      this.timeOutId = window.setTimeout(() => {
         if (isCorrect) {
           this.updateScore();
-          this.startGame();
+          this.start();
         } else {
           this.containerEl.append("Click 'Start' to try again!");
         }
@@ -46,6 +47,14 @@ export class GameManager {
 
       this.timer.start(this.settings.answerDuration, checkAnswer);
     });
+  }
+
+  stop() {
+    this.timer.stop();
+    if (this.timeOutId !== null) {
+      window.clearTimeout(this.timeOutId);
+      this.timeOutId = null;
+    }
   }
 
   private updateScore(): void {

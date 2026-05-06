@@ -28,18 +28,20 @@ DOM.formSettings.addEventListener("submit", (e: Event): void => {
   answerDuration = Number(DOM.answerInput.value);
 });
 
+let game: GameManager | null = null;
+
 DOM.btnStart.addEventListener("click", (): void => {
   DOM.score.textContent = "0";
-  const game: GameManager = new GameManager(
-    DOM.boardContainer,
-    DOM.score,
-    DOM.time,
-    {
-      size,
-      appearanceDuration,
-      answerDuration,
-    },
-  );
 
-  game.startGame();
+  if (game !== null) {
+    game.stop();
+  }
+
+  game = new GameManager(DOM.boardContainer, DOM.score, DOM.time, {
+    size,
+    appearanceDuration,
+    answerDuration,
+  });
+
+  game.start();
 });
