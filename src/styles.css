@@ -31,6 +31,24 @@ li {
 
 input {
   font-size: inherit;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+}
+
+input:focus {
+  outline: 0.1rem solid green;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 button {
