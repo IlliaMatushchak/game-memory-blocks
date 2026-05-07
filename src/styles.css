@@ -104,13 +104,12 @@ header menu button {
 
 .settings form {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 12rem);
   grid-auto-rows: 8rem;
+  align-items: center;
   position: absolute;
   top: 0;
   right: 50%;
-  max-width: 30rem;
-  min-width: 18rem;
   border-radius: 1rem;
   background-color: rgba(128, 128, 128, 0.8);
   transform: translate(50%, -100%);
@@ -137,14 +136,14 @@ header menu button {
 
 .settings form div:last-child {
   border-top: 0.2rem solid gray;
+  padding: 0.5rem;
   grid-column: 1/-1;
-  align-items: center;
+  align-self: stretch;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
-}
-
-.settings form button {
-  margin: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 #btn-save-settings {
@@ -205,5 +204,11 @@ header menu button {
 @media screen and (max-width: 450px) {
   :root {
     --box-size: calc(85vw/var(--board-size-cols));
+  }
+
+  .settings form {
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+    align-items: end;
   }
 }
