@@ -39,6 +39,11 @@ input:focus {
   outline: 0.1rem solid green;
 }
 
+input:invalid {
+  outline: 0.1rem solid red;
+  background-color: rgb(255, 200, 200);
+}
+
 input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
@@ -123,7 +128,7 @@ header menu button {
 .settings form {
   display: grid;
   grid-template-columns: repeat(2, 12rem);
-  grid-auto-rows: 8rem;
+  grid-auto-rows: 1fr;
   align-items: center;
   position: absolute;
   top: 0;
@@ -150,6 +155,20 @@ header menu button {
   text-align: center;
   width: 5rem;
   height: 3rem;
+}
+
+.settings form span {
+  display: block;
+  height: 1rem;
+}
+
+.settings form input:invalid + span::before {
+  content: attr(data-error-msg);
+  color: red;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1;
+  vertical-align: top;
 }
 
 .settings form div:last-child {
@@ -228,5 +247,9 @@ header menu button {
     grid-template-columns: repeat(2, 1fr);
     width: 90%;
     align-items: end;
+  }
+
+  .settings form span {
+    height: 2rem;
   }
 }

@@ -13,19 +13,23 @@
       <form id="form-settings" action="">
         <label>
           Кількість рядків:
-          <input type="number" id="rows" value="3" min="2" max="6" />
+          <input type="number" id="rows" required value="3" min="2" max="6" />
+          <span data-error-msg="Тільки від 2 до 6"></span>
         </label>
         <label>
           Кількість колонок:
-          <input type="number" id="cols" value="3" min="2" max="6" />
+          <input type="number" id="cols" required value="3" min="2" max="6" />
+          <span data-error-msg="Тільки від 2 до 6"></span>
         </label>
         <label>
           Час показу (с):
-          <input type="number" id="appearance" value="1" min="1" max="10" />
+          <input type="number" id="appearance" required value="1" min="1" max="10" />
+          <span data-error-msg="Тільки від 1 до 10"></span>
         </label>
         <label>
           Час на відповідь (с):
-          <input type="number" id="answer" value="5" min="1" max="20" />
+          <input type="number" id="answer" required value="5" min="1" max="20" />
+          <span data-error-msg="Тільки від 1 до 20"></span>
         </label>
         <div>
           <button type="submit" id="btn-save-settings">Зберегти</button>
