@@ -36,7 +36,7 @@ export class GameManager {
           this.updateScore();
           this.start();
         } else {
-          this.containerEl.append("Click 'Start' to try again!");
+          this.containerEl.append("Нажміть 'Старт' щоб спробувати знову!");
         }
       }, 1000);
     };
