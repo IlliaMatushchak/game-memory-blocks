@@ -31,6 +31,7 @@ DOM.formSettings.addEventListener("submit", (e: Event): void => {
   size.cols = Number(DOM.colsInput.value);
   appearanceDuration = Number(DOM.appearanceInput.value);
   answerDuration = Number(DOM.answerInput.value);
+  hide(DOM.settings);
 });
 
 let game: GameManager | null = null;
