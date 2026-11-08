@@ -8,12 +8,44 @@
   --board-size-cols: 1;
   --board-size-rows: 1;
   --box-size: 7rem;
+
+  --color-bg: #e8f5ec;
+  --color-surface: #f0fdf4;
+  --color-text: #163a2a;
+  --color-primary: #16a34a;
+  --color-primary-hover: #15803d;
+  --color-border: black;
+  --color-muted: #86a995;
+  --color-success: #22c55e;
+  --color-error: #d32020;
+  --color-error-surface: #fee2e2;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-family: 'Shantell Sans', sans-serif, cursive;
   position: relative;
   margin: 0;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(
+      ellipse at 10% 10%,
+      rgba(52, 211, 153, 0.35) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 90% 15%,
+      rgba(16, 185, 129, 0.25) 0%,
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 80% 90%,
+      rgba(5, 150, 105, 0.25) 0%,
+      transparent 40%
+    ),
+    linear-gradient(135deg, #f0fdf4 0%, #dcfce7 35%, #bbf7d0 70%, #d1fae5 100%);
+
+  background-attachment: fixed;
+  color: var(--color-text);
 }
 
 menu,
@@ -31,27 +63,31 @@ li {
 
 input {
   font-size: inherit;
-  border: 0.1rem solid black;
+  border: 0.1rem solid var(--color-border);
   border-radius: 0.5rem;
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 input:focus {
-  outline: 0.1rem solid green;
+  outline: none;
+  box-shadow: 0 0 15px var(--color-primary-hover);
 }
 
 input:invalid {
-  outline: 0.1rem solid red;
-  background-color: rgb(255, 200, 200);
+  outline: none;
+  box-shadow: 0 0 15px var(--color-error);
+  background-color: #fff1f2;
 }
 
-input[type="number"] {
+input[type='number'] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -60,14 +96,25 @@ button {
   width: 7rem;
   height: 3rem;
   border-radius: 1rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid var(--color-border);
   cursor: pointer;
-  transition: transform 0.2s;
   font-size: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.3);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 button:hover {
   transform: scale(1.1);
+  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.3);
 }
 
 button:active {
@@ -98,6 +145,18 @@ header menu button {
   margin: 0.5rem;
 }
 
+#btn-start,
+#btn-save-settings {
+  background: linear-gradient(135deg, #22c55e, #059669);
+  color: white;
+  border: none;
+}
+
+#btn-start:hover,
+#btn-save-settings:hover {
+  background: linear-gradient(135deg, #16a34a, #047857);
+}
+
 #btn-fullscreen {
   position: fixed;
   bottom: 1rem;
@@ -105,14 +164,15 @@ header menu button {
   width: 3rem;
   height: 3rem;
   border-radius: 0.5rem;
-  background-image: url("./images/fullscreen.png");
+  background-image: url('./images/fullscreen.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 80%;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.5);
 }
 
 #btn-fullscreen.is-fullscreen {
-  background-image: url("./images/smallscreen.png");
+  background-image: url('./images/smallscreen.png');
 }
 
 .settings.show {
@@ -122,7 +182,7 @@ header menu button {
 
 .settings.show {
   inset: 0;
-  backdrop-filter: blur(0.2rem);
+  backdrop-filter: blur(0.3rem);
 }
 
 .settings form {
@@ -134,9 +194,12 @@ header menu button {
   top: 0;
   right: 50%;
   border-radius: 1rem;
-  background-color: rgba(128, 128, 128, 0.8);
-  transform: translate(50%, -100%);
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translate(50%, -110%);
   transition: transform 0.2s;
+  box-shadow:
+    0 8px 32px rgba(22, 101, 52, 0.3),
+    0 2px 8px rgba(22, 101, 52, 0.3);
 }
 
 .settings.show form {
@@ -164,7 +227,7 @@ header menu button {
 
 .settings form input:invalid + span::before {
   content: attr(data-error-msg);
-  color: red;
+  color: var(--color-error);
   font-size: 0.9rem;
   font-weight: bold;
   line-height: 1;
@@ -183,22 +246,33 @@ header menu button {
   gap: 0.5rem;
 }
 
-#btn-save-settings {
-  background-color: green;
+#btn-close-settings {
+  background: linear-gradient(135deg, #fff1f2 0%, #fee2e2 50%, #fecaca 100%);
+  color: var(--color-error);
+  border-color: var(--color-error);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-#btn-close-settings {
-  background-color: rgb(210, 0, 0);
+#btn-close-settings:hover {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 50%, #fca5a5 100%);
 }
 
 #info-container {
   text-align: center;
   font-weight: bold;
   margin-bottom: 1.2rem;
+  color: var(--color-text);
 }
 
 #info-container span {
-  color: red;
+  color: var(--color-primary);
+}
+
+#info-container #time {
+  font-variant-numeric: tabular-nums;
 }
 
 #board-container {
@@ -216,31 +290,38 @@ header menu button {
 }
 
 .block {
-  background-color: rgb(170, 170, 170);
+  background: linear-gradient(145deg, #bbf7d0, #86efac);
+  box-shadow: inset 0 1px 3px rgba(22, 101, 52, 0.1);
+  border-radius: 0.5rem;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .selected {
-  background-color: black;
+  background: linear-gradient(135deg, #34d399, #059669);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.4);
 }
 
 .success {
-  outline: 0.4rem solid green;
+  outline: 0.4rem solid var(--color-success);
   outline-offset: 0.4rem;
 }
 
 .error {
-  background-color: red;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 55%, #b91c1c 100%);
+  box-shadow: 0 4px 14px rgba(185, 28, 28, 0.4);
 }
 
 @media screen and (max-width: 700px) {
   :root {
-    --box-size: calc(75vw/var(--board-size-cols));
+    --box-size: calc(75vw / var(--board-size-cols));
   }
 }
 
 @media screen and (max-width: 450px) {
   :root {
-    --box-size: calc(85vw/var(--board-size-cols));
+    --box-size: calc(85vw / var(--board-size-cols));
   }
 
   .settings form {
