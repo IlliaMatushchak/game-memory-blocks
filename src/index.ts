@@ -4,11 +4,16 @@ import { GameManager } from "./game/GameManager";
 import { Size } from "./types/index";
 
 let size: Size = {
-  rows: Number(DOM.rowsInput.value),
-  cols: Number(DOM.colsInput.value),
+  rows: 3,
+  cols: 3,
 };
-let appearanceDuration: number = Number(DOM.appearanceInput.value);
-let answerDuration: number = Number(DOM.answerInput.value);
+let appearanceDuration = 1;
+let answerDuration = 5;
+
+DOM.rowsInput.value = String(size.rows);
+DOM.colsInput.value = String(size.cols);
+DOM.appearanceInput.value = String(appearanceDuration);
+DOM.answerInput.value = String(answerDuration);
 
 setupFullscreen(DOM.btnFullscreen);
 
